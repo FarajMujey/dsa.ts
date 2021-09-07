@@ -172,7 +172,7 @@ export default class LinkedList<T> {
    * @param index 元素的下标
    * @returns
    */
-  private getNodeAt(index: number): Node<T> {
+  protected getNodeAt(index: number): Node<T> {
     if (index < 0 || index >= this.count) return undefined
     let current = this.head
     for (let i = 0; i < index && current; i++) {
