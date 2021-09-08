@@ -2,7 +2,7 @@
  * 使用一个对象来实现栈
  */
 class Stack<T> {
-  private items: {}
+  private items: any
   private count: number
   constructor() {
     this.items = {}

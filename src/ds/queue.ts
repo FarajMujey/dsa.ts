@@ -2,7 +2,7 @@
  * 队列
  */
 export default class Queue<T> {
-  private items: object
+  private items: any
   private count: number
   private header: number
   constructor() {
