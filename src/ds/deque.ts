@@ -2,7 +2,7 @@
  * 双端队列
  */
 export default class Deque<T> {
-  private items: {}
+  private items: any
   private lowestCount: number
   private count: number
 
