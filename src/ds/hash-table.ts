@@ -2,8 +2,8 @@ import { defaultToStringFunction } from '../util/defaultToStringFunction'
 import { Entry } from './dictionary'
 
 export default class HashTable<K, V> {
-  private toStrFn: Function
-  private table: any
+  protected toStrFn: Function
+  protected table: any
 
   constructor(toStrFn: Function = defaultToStringFunction) {
     this.toStrFn = toStrFn
@@ -74,9 +74,9 @@ export default class HashTable<K, V> {
 
   toString(): string {
     if (this.table === {}) return ''
-    let res =  ''
-    for(let prop in this.table) {
-      if(this.table[prop] != null)
+    let res = ''
+    for (let prop in this.table) {
+      if (this.table[prop] != null)
         res = `${res} ${this.table[prop].toString()}`
     }
     return `{${res}}`
