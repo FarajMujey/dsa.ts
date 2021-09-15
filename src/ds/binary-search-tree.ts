@@ -11,8 +11,8 @@ import { Compare, defaultCompareFunction } from '../util/defaultCompareFunction'
  *  remove(key)：从树中移除某个键。
  */
 export default class BinarySearchTree<T> {
-  private root: Node<T>
-  private compareFn: Function
+  protected root: Node<T>
+  protected compareFn: Function
 
   constructor(compareFn: Function = defaultCompareFunction) {
     this.root = undefined
@@ -58,7 +58,7 @@ export default class BinarySearchTree<T> {
     return this.searchNode(this.root, key)
   }
 
-  private searchNode(node: Node<T>, key: T): boolean {
+  protected searchNode(node: Node<T>, key: T): boolean {
     if (node == null) return false
     switch (this.compareFn(key, node.value)) {
       case Compare.LESS_THAN:
@@ -77,7 +77,7 @@ export default class BinarySearchTree<T> {
     this.doInOrderTraverse(this.root, cb)
   }
 
-  private doInOrderTraverse(node: Node<T>, cb: Function) {
+  protected doInOrderTraverse(node: Node<T>, cb: Function) {
     if (node == null) return
     this.doInOrderTraverse(node.left, cb)
     cb(node.value)
@@ -91,7 +91,7 @@ export default class BinarySearchTree<T> {
     this.doPreOrder(this.root, cb)
   }
 
-  private doPreOrder(node: Node<T>, cb: Function) {
+  protected doPreOrder(node: Node<T>, cb: Function) {
     if (node == null) return
     cb(node.value)
     this.doPreOrder(node.left, cb)
@@ -105,7 +105,7 @@ export default class BinarySearchTree<T> {
     this.doPostOrder(this.root, cb)
   }
 
-  private doPostOrder(node: Node<T>, cb: Function) {
+  protected doPostOrder(node: Node<T>, cb: Function) {
     if (node == null) return
     this.doPostOrder(node.left, cb)
     this.doPostOrder(node.right, cb)
@@ -120,7 +120,7 @@ export default class BinarySearchTree<T> {
     return this.minNode(this.root)
   }
 
-  private minNode(node: Node<T>): T {
+  protected minNode(node: Node<T>): T {
     let current = node
     if (current != null && current.left != null) current = current.left
     return current.value
@@ -134,7 +134,7 @@ export default class BinarySearchTree<T> {
     return this.maxNode(this.root)
   }
 
-  private maxNode(node: Node<T>): T {
+  protected maxNode(node: Node<T>): T {
     let current = node
     if (current != null && current.right != null) current = current.right
     return current.value
@@ -148,7 +148,7 @@ export default class BinarySearchTree<T> {
     this.root = this.removeNode(this.root, key)
   }
 
-  private removeNode(node: Node<T>, key: T): Node<T> {
+  protected removeNode(node: Node<T>, key: T): Node<T> {
     if (node == null) return null
     switch (this.compareFn(key, node.value)) {
       case Compare.LARGE_THAN:
